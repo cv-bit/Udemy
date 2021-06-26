@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>RoboPage</title>
+	<script src="build/ouibounce.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" href="modal.css">
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+</head>
+<body>
+	<h1>Robot Friend</h1>
+	<div class="robots">
+		<div class="android"> 
+			<div class="head"> 
+				<div class="eyes"> 
+					<div class="left_eye"></div> 
+					<div class="right_eye"></div>
+				</div> 
+			</div>
+			<div class="body">
+				<div class="upper_body"> 
+					<div class="left_arm"></div> 
+					<div class="torso"></div> 
+					<div class="right_arm"></div> 
+				</div> 
+				<div class="lower_body"> 
+					<div class="left_leg"></div> 
+					<div class="right_leg"></div> 
+				</div> 
+			</div>
+		</div>
+	</div>
+	<div id="ouibounce-modal" style="display: none;">
+		<div class="underlay"></div>
+		<div class="modal">
+		<div class="modal-title">
+			<h3>This is a Ouibounce modal</h3>
+		</div>
+
+		<div class="modal-body">
+			<p>Thanks for stoping by!</p>
+			<br>
+			<p>You can style your Ouibounce modal however you see fit. You can also include big buttons, an email capture or just plain text. The sky's the limit!</p>
+			<br>
+			<p>Close this modal by clicking "No Thanks" below or clicking anywhere outside of the modal.</p>
+
+			<form>
+			<input type="text" placeholder="you@email.com">
+			<input type="submit" value="learn more »">
+			<p class="form-notice">*this is a fake form</p>
+			</form>
+		</div>
+
+		<div class="modal-footer">
+			<p>no thanks</p>
+		</div>
+		</div>
+	</div>
+	<script>
+
+		// if you want to use the 'fire' or 'disable' fn,
+		// you need to save OuiBounce to an object
+		var _ouibounce = ouibounce(document.getElementById('ouibounce-modal'), {
+		  aggressive: true,
+		  timer: 0,
+		  callback: function() { console.log('ouibounce fired!'); }
+		});
+  
+		$('body').on('click', function() {
+		  $('#ouibounce-modal').hide();
+		});
+  
+		$('#ouibounce-modal .modal-footer').on('click', function() {
+		  $('#ouibounce-modal').hide();
+		});
+  
+		$('#ouibounce-modal .modal').on('click', function(e) {
+		  e.stopPropagation();
+		});
+	  </script>
+</body>
+</html>
